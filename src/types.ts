@@ -9,3 +9,32 @@ export interface PropensityData {
   propensity: number;
   frequency: number;
 }
+
+export interface BLSData {
+  year: number;
+  occupation: string;
+  tasks: {
+    name: string;
+    value: number;
+  }[];
+}
+
+export interface BLSYear {
+  year: number;
+  label: string;
+}
+
+export interface BLSOccupation {
+  code: string;
+  title: string;
+}
+
+export interface TaskBucket {
+  category: string;
+  tasks: {
+    name: string;
+    value: number;
+  }[];
+}
+
+export type ChartType = 'treemap' | 'propensity';

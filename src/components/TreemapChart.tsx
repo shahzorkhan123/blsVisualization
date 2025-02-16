@@ -22,7 +22,7 @@ export const TreemapChart: React.FC<TreemapChartProps> = ({ data }) => {
           aspectRatio={4 / 3}
           stroke="#fff"
           fill="#8884d8"
-          content={({ root, depth, x, y, width, height, index, payload, colors, rank, name }) => {
+          content={({ root, depth, x, y, width, height, index, payload, colors, rank, name, value }) => {
             return (
               <g>
                 <rect
@@ -37,16 +37,30 @@ export const TreemapChart: React.FC<TreemapChartProps> = ({ data }) => {
                     strokeOpacity: 1 / (depth + 1e-10),
                   }}
                 />
-                {depth === 1 && (
-                  <text
-                    x={x + width / 2}
-                    y={y + height / 2 + 7}
-                    textAnchor="middle"
-                    fill="#fff"
-                    fontSize={14}
-                  >
-                    {name}
-                  </text>
+                {width > 50 && height > 30 && (
+                  <>
+                    <text
+                      x={x + width / 2}
+                      y={y + height / 2 - 8}
+                      textAnchor="middle"
+                      fill="#fff"
+                      fontSize={12}
+                      style={{
+                        fontWeight: depth === 1 ? 'bold' : 'normal',
+                      }}
+                    >
+                      {name}
+                    </text>
+                    <text
+                      x={x + width / 2}
+                      y={y + height / 2 + 12}
+                      textAnchor="middle"
+                      fill="#fff"
+                      fontSize={11}
+                    >
+                      {value}
+                    </text>
+                  </>
                 )}
               </g>
             );
