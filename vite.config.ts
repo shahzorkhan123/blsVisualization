@@ -1,15 +1,12 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/blsVisualization/',
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000', // Your backend server URL
-        changeOrigin: true,
-        secure: false,
-      },
-    },
-  },
-});
+      '/api': 'http://localhost:3000'
+    }
+  }
+})
