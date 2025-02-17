@@ -29,6 +29,11 @@ export interface BLSOccupation {
   title: string;
 }
 
+export interface TaskData {
+  name: string;
+  value: number;
+}
+
 export interface TaskBucket {
   category: string;
   tasks: {

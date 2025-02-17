@@ -3,8 +3,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // This ensures assets are loaded correctly when deployed
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // Your backend server URL
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 });

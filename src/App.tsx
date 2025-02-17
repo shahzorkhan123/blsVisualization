@@ -35,22 +35,32 @@ function App() {
   });
 
   // Transform task data for visualization
-  const treemapData = taskData.map(category => ({
-    name: category.category,
-    value: category.tasks.reduce((sum, task) => sum + task.value, 0),
-    children: category.tasks.map(task => ({
-      name: task.name,
-      value: task.value,
-    })),
+  // const treemapData = taskData.map(category => ({
+  //   name: category.category,
+  //   value: category.tasks.reduce((sum, task) => sum + task.value, 0),
+  //   children: category.tasks.map(task => ({
+  //     name: task.name,
+  //     value: task.value,
+  //   })),
+  // }));
+
+  const treemapData = taskData.map(task => ({
+    name: task.name,
+    value: task.value
   }));
 
-  const propensityData = taskData.flatMap(category =>
-    category.tasks.map(task => ({
+  // const propensityData = taskData.flatMap(category =>
+  //   category.tasks.map(task => ({
+  //     group: task.name,
+  //     propensity: task.value,
+  //     frequency: Math.round(task.value * 1.5), // Example calculation
+  //   }))
+  // );
+  const propensityData = taskData.flatMap(task => ({
       group: task.name,
       propensity: task.value,
       frequency: Math.round(task.value * 1.5), // Example calculation
-    }))
-  );
+    }));
 
   if (yearsLoading || occupationsLoading || taskDataLoading) {
     return (
