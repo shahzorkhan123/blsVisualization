@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"node server/index.js\""
+    "dev": "concurrently \"vite\" \"node server/index.js\"",
+    "build": "concurrently \"vite\" \"node server/index.js\""
   },
   "dependencies": {
     "@tanstack/react-query": "^5.28.4",
